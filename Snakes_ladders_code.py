@@ -1,3 +1,4 @@
+
 from diceroll import roll_the_dice
 
 # Player 1 Name
@@ -23,8 +24,6 @@ ladder_bases = [4,14,38,53,80]
 
 # Ladder Tops Positions
 ladder_tops = [15,25,60,71,95]
-
-# Task 2 begins here
 
 # Roll the dice for the first player
 diceroll = roll_the_dice()
