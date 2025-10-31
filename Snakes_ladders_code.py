@@ -5,7 +5,7 @@ from diceroll import roll_the_dice
 p1_name = "Red"
 
 # Player 1 Position
-p1_position = 0
+p1_position = 0 
 
 # Player 2 Name
 p2_name = "Blue"
@@ -29,20 +29,33 @@ ladder_tops = [15,25,60,71,95]
 diceroll = roll_the_dice()
 
 # Write the logic to move the first player
-if p1_position + diceroll <= 100:
-    p1_position += diceroll
+p1_position += diceroll 
 
 # Roll the dice for the second player
 diceroll = roll_the_dice()
 
 # Write the logic to move the second player
-if p2_position + diceroll <= 100:
-    p2_position += diceroll
+p2_position += diceroll 
 
-# Print the position of the first player
+# Check if player 1 is either on a snake head or ladder base
 
+for i in range(len(snake_heads)):
+    if p1_position == snake_heads[i]:
+        p1_position = snake_tails[i]
+for i in range(len(ladder_bases)):
+    if p1_position == ladder_bases[i]:
+        p1_position = ladder_tops[i]
+        print(i)
+# Check if player 2 is either on a snake head or ladder Base
+for i in range(len(snake_heads)):
+    if p2_position == snake_heads[i]:
+        p2_position = snake_tails[i]
+for i in range(len(ladder_bases)):
+    if p2_position == ladder_bases[i]:
+        p2_position = ladder_tops[i]
+
+# Print the position of player 1
 print(f'Player {p1_name} is in the position {p1_position}')
 
-# Print the position of the second player
-
+# Print the position of player 2
 print(f'Player {p2_name} is in the position {p2_position}')
