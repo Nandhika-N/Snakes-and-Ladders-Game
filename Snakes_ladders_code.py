@@ -1,18 +1,37 @@
 
 from diceroll import roll_the_dice
 
-# Initialise the players
-# Player 1 Name
-p1_name = "Red"
+# List the possible players
+player_colours = ["Red", "Blue", "Green", "White"]
 
-# Player 1 Position
-p1_position = 0
+# Define an empty list for players (elements will be added depending on user input)
+players = []
 
-# Player 2 Name
-p2_name = "Blue"
+# User can input number of players
+num_players_any_type = input("Enter the number of players(1-4): ")
 
-# Player 2 Position
-p2_position = 0
+# Player must only input numbers between 1-4 to continue
+while num_players_any_type != "1" and num_players_any_type != '2' and num_players_any_type != '3' and num_players_any_type != '4':
+    print('Sorry mate, that is an invalid number. Try again: ')
+    num_players_any_type = (input("Enter the number of players(1-4 INTEGERS ONLY): "))
+
+# Converts input to an integer
+num_players = int(num_players_any_type)
+
+# Initialize players---
+
+# Add the players depending on the user input
+players = player_colours[:num_players]
+
+# Print the list of the players to ensure we have the correct set of players
+print(f'These are the {num_players} competitors you have chosen: {players}')
+
+# Define a new dictionary that will show the positions of each player
+positions = []
+
+# All players will start on position 0
+for player in players:
+    positions.append(0)
 
 # Initialise the snakes and ladders
 # Snake Head Positions
@@ -28,56 +47,34 @@ ladder_bases = [8, 26, 38, 47, 66]
 ladder_tops = [43, 39, 55, 81, 92]
 
 # Commence the game
-while p1_position < 100 and p2_position < 100:
-    # Roll the dice for the red player
-    diceroll = roll_the_dice()
-
-    # Write the logic to move the red player
-    # Check to see if the resultant position is within the board
-    if p1_position + diceroll <= 100:
-        p1_position += diceroll
-
-        # Check if player 1 is either on a snake head or ladder Base
-    for i in range(len(snake_heads)):
-        if p1_position == snake_heads[i]:
-            p1_position = snake_tails[i]
-            print(f'Player {p1_name} stepped on a snake and is now in position {p1_position}')
-    for i in range(len(ladder_bases)):
-        if p1_position == ladder_bases[i]:
-            p1_position = ladder_tops[i]
-            print(f'Player {p1_name} climbed a ladder and is now in position {p1_position}')
-
-    # Roll the dice for the blue player
-    # Check to see if red player has already won
-    if p1_position != 100:
+winner = None
+while not winner:
+    # Roll the dice for each player and update their position
+    for player in players:
+        current_player_index = players.index(player)
+        print(current_player_index)
         diceroll = roll_the_dice()
-    else:
-        break
+        if positions[current_player_index] + diceroll <= 100:
+            positions[current_player_index] += diceroll
+            print(f'{player} rolled a {diceroll} and is now on position {positions[current_player_index]}')
 
-    # Write the logic to move the blue player
-    if p2_position + diceroll <= 100:
-        p2_position += diceroll
+            # Check if players are either on a snake head or ladder base
+            for i in range(len(snake_heads)):
+                if positions[current_player_index] == snake_heads[i]:
+                    positions[current_player_index] = snake_tails[i]
+                    print(
+                        f'Player {player} stepped on a snake and is now in position {positions[current_player_index]}')
+            for i in range(len(ladder_bases)):
+                if positions[current_player_index] == ladder_bases[i]:
+                    positions[current_player_index] = ladder_tops[i]
+                    print(f'Player {player} climbed a ladder and is now in position {positions[current_player_index]}')
+            # Check to see if there is a winner
+            if positions[current_player_index] == 100:
+                winner = player
+                break
 
-        # Check if player 2 is either on a snake head or ladder Base
-    for i in range(len(snake_heads)):
-        if p2_position == snake_heads[i]:
-            p2_position = snake_tails[i]
-            print(f'Player {p2_name} stepped on a snake and is now in position {p2_position}')
-    for i in range(len(ladder_bases)):
-        if p2_position == ladder_bases[i]:
-            p2_position = ladder_tops[i]
-            print(f'Player {p2_name} stepped on a snake and is now in position {p2_position}')
-
-    # Print the current positions of the players 
-    print(f'Player {p1_name} is in the position {p1_position} \n Player {p2_name} is in the position {p2_position}')
-    if p1_position == 100 or p2_position == 100:
-        break
-
-# Check to see if there is a winner
-if p1_position == 100:
-    winner = p1_name
-elif p2_position == 100:
-    winner = p2_name
+    # Print the current positions of the players
+    print(positions)
 
 # Announce the winner
 print(f'Player {winner} has reached 100 and is the winner!')
