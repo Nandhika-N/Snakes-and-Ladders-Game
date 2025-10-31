@@ -18,7 +18,6 @@ Clean functional design and modularity
 The final version of the game uses a dictionary-based structure for better readability and scalability.
 
 Features
-
 Multi-player support (1–4 players)
 Snakes and ladders interactions
 No moves beyond tile 100
@@ -28,7 +27,6 @@ Surprise tiles and special rolls
 Modular, function-driven structure
 
 Game Rules
-
 All players begin at position 0.
 Each player rolls a dice (1–6) on their turn.
 Landing on a ladder base moves the player up to its top.
@@ -39,22 +37,20 @@ Surprise tiles trigger special effects determined by a 3-sided dice roll.
 
 Game Structure
 
-Players: Dictionary { 'Red': 0, 'Blue': 0, ... }
+Players: Dictionary { 'Red': 0, 'Blue': 0, Green': 0, White': 0, }
 Snakes: Dictionary {25:6, 44:23, 65:34, 76:28, 99:56}
 Ladders: Dictionary {8:43, 26:39, 38:55, 47:81, 66:92}
 Surprise Tiles: List of randomly generated tile positions
 Winner: String that stores the name of the winning player
 
 Code Organization
-
 snakes-and-ladders
 main.py
 README.md
-optional helper code documents
-The primary logic lives in main.py, organized into reusable functions for clean structure and readability.
+other helper code documents
+The primary logic lives in main.py, organised into reusable functions for clean structure and readability.
 
 Functions Summary
-
 initialise_game(): Sets up the game dictionary with players, snakes, ladders, and starting positions.
 get_num_players(): Prompts the user for the number of players (1–4).
 play_game(game): Runs an automated game loop until a player wins and returns the winner’s name.
@@ -73,7 +69,7 @@ Priority Rule:
 Snakes and ladders take precedence over surprise rolls.
 If a player moves via a snake or ladder and lands on a surprise tile afterward, the surprise effect occurs after the snake or ladder movement.
 
-Example Gameplay
+Example Gameplay:
 
 Enter number of players (1-4): 2
 Player Red is in position 0
@@ -91,16 +87,7 @@ Player Red stepped on a snake and is now in position 6
 Player Blue has reached 100 and is the winner
 
 How to Run:
-
-Clone this repository:
-git clone https://github.com/yourusername/snakes-and-ladders.git
-Navigate into the folder:
-cd snakes-and-ladders
-Run the main script:
-python main.py
-Follow the on-screen prompts to play manually or view the automatic game simulation.
-
-Final Note
+Clone this repository, navigate into the folder, run the main script and follow the on-screen prompts to play manually or view the automatic game simulation.
 
 This project showcases a complete progression from basic Python programming to modular and functional design principles.
 It is a great way to learn loops, conditionals, lists, dictionaries, user input, and function-driven programming while creating a fun, interactive game.
