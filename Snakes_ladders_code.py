@@ -1,6 +1,4 @@
-from diceroll import roll_the_dice, special_roll
-from helpers import generate_surprises
-
+from diceroll import roll_the_dice, special_roll, generate_surprises
 
 def initialise_game() -> dict:
     # Create empty dictionary called game
@@ -225,7 +223,11 @@ def turn_by_turn_gameplay():
             winner = pick_winner(game["players"])
             if winner:
                 print(f'The winner is {winner}')
-                return
+                play_again = input(f"Would you like to play again? Type Y or N? ")
+                if play_again == 'Y':
+                    main()
+                elif play_again == 'N':
+                    return
 
             # Print the current positions of the players
             print(f'Positions: {game["players"]}')
@@ -261,7 +263,11 @@ def main():
             winner = play_game(game)
             if winner:  # When the pick_winner() function returns a players name and passes it to play_game() the winner can be printed as it is no longer returns 'None'.
                 print(f"The winner is {winner}!")
-            break
+                play_again = input(f"Would you like to play again? Type Y or N? ")
+                if play_again == 'Y':
+                    main()
+                elif play_again == 'N':
+                    break
 
         # Turn by turn game
         elif player_gamechoice == 'manual':
