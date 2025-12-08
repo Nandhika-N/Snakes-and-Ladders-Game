@@ -23,6 +23,7 @@ Snakes and ladders interactions
 No moves beyond tile 100
 Automatic winner detection
 Manual and automated play modes
+- 'auto' (computer plays by itself - up to 4 players) or 'manual'(you can play the game manually - 2 players)
 Surprise tiles and special rolls
 Modular, function-driven structure
 
