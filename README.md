@@ -8,57 +8,70 @@ This project follows a structured learning path, where each stage introduces new
 
 This Python project simulates a classic Snakes and Ladders game.
 It starts from defining players and board setup and evolves into a full-featured game engine with:
-Dynamic number of players (1–4)
-Random dice rolls
-Snakes and ladders logic
-Win conditions
-Turn-by-turn console gameplay
-Surprise power tiles for advanced mechanics
-Clean functional design and modularity
-The final version of the game uses a dictionary-based structure for better readability and scalability.
+- Dynamic number of players (1–4)
+- Random dice rolls
 
-Features
-Multi-player support (1–4 players)
-Snakes and ladders interactions
-No moves beyond tile 100
-Automatic winner detection
-Manual and automated play modes
-- 'auto' (computer plays by itself - up to 4 players) or 'manual'(you can play the game manually - 2 players)
-Surprise tiles and special rolls
-Modular, function-driven structure
+Snakes and ladders logic:
+- Win conditions
+- Turn-by-turn console gameplay
+- Surprise power tiles for advanced mechanics
+- Clean functional design and modularity
+- The final version of the game uses a dictionary-based structure for better readability and scalability.
+
+Features:
+- Multi-player support (1–4 players)
+- Snakes and ladders interactions
+- No moves beyond tile 100
+- Automatic winner detection
+- Manual and automated play modes (chosen by player)
+  - 'auto' (computer plays by itself - up to 4 players)
+  - 'manual'(you can play the game manually - 2 players)
+- Surprise tiles and special rolls
+- Modular, function-driven structure
 
 Game Rules
-All players begin at position 0.
-Each player rolls a dice (1–6) on their turn.
-Landing on a ladder base moves the player up to its top.
-Landing on a snake head moves the player down to its tail.
-Players cannot move beyond position 100.
-The first player to reach exactly 100 wins.
-Surprise tiles trigger special effects determined by a 3-sided dice roll.
+- All players begin at position 0.
+- Each player rolls a dice (1–6) on their turn.
+- Landing on a ladder base moves the player up to its top.
+- Landing on a snake head moves the player down to its tail.
+- Players cannot move beyond position 100.
+- The first player to reach exactly 100 wins.
+- Surprise tiles trigger special effects determined by a 3-sided dice roll.
 
-Game Structure
-
-Players: Dictionary { 'Red': 0, 'Blue': 0, Green': 0, White': 0, }
-Snakes: Dictionary {25:6, 44:23, 65:34, 76:28, 99:56}
-Ladders: Dictionary {8:43, 26:39, 38:55, 47:81, 66:92}
-Surprise Tiles: List of randomly generated tile positions
-Winner: String that stores the name of the winning player
+Game Structure:
+Players 
+- Dictionary { 'Red': 0, 'Blue': 0, Green': 0, White': 0, }
+Snakes
+- Dictionary {25:6, 44:23, 65:34, 76:28, 99:56}
+Ladders
+- Dictionary {8:43, 26:39, 38:55, 47:81, 66:92}
+Surprise Tiles
+- List of randomly generated tile positions
+Winner
+- String that stores the name of the winning player
 
 Code Organization
-snakes-and-ladders
-main.py
-README.md
-other helper code documents
-The primary logic lives in main.py, organised into reusable functions for clean structure and readability.
+- snakes-and-ladders
+- main.py
+  - The primary logic lives in main.py, organised into reusable functions for clean structure and readability.
+- README.md
+- other helper code documents
 
-Functions Summary
-initialise_game(): Sets up the game dictionary with players, snakes, ladders, and starting positions.
-get_num_players(): Prompts the user for the number of players (1–4).
-play_game(game): Runs an automated game loop until a player wins and returns the winner’s name.
-pick_winner(players): Checks if any player’s position equals 100 and returns their name.
-turn_by_turn_gameplay(): Enables manual gameplay mode where users input commands like “roll” or “quit”.
-generate_surprises(): Randomly generates a list of power tile positions.
-special_roll(): Rolls a special 3-sided dice returning 0, 1, or 2 to determine surprise effects.
+Functions Summary:
+initialise_game()
+- The primary logic lives in main.py, organised into reusable functions for clean structure and readability. Sets up the game dictionary with players, snakes, ladders, and starting positions.
+get_num_players()
+- The primary logic lives in main.py, organised into reusable functions for clean structure and readability. Prompts the user for the number of players (1–4).
+play_game(game)
+- The primary logic lives in main.py, organised into reusable functions for clean structure and readability. Runs an automated game loop until a player wins and returns the winner’s name.
+pick_winner(players)
+- The primary logic lives in main.py, organised into reusable functions for clean structure and readability. Checks if any player’s position equals 100 and returns their name.
+turn_by_turn_gameplay()
+- The primary logic lives in main.py, organised into reusable functions for clean structure and readability. Enables manual gameplay mode where users input commands like “roll” or “quit”.
+generate_surprises()
+- The primary logic lives in main.py, organised into reusable functions for clean structure and readability. Randomly generates a list of power tile positions.
+special_roll()
+- The primary logic lives in main.py, organised into reusable functions for clean structure and readability. Rolls a special 3-sided dice returning 0, 1, or 2 to determine surprise effects.
 
 Power Tiles and Surprises
 When a player lands on a surprise tile, they roll a special 3-sided dice. The result determines a unique effect:
@@ -67,8 +80,9 @@ Roll 1: The next player loses their next turn.
 Roll 2: All other players move back 5 tiles (not below 0).
 
 Priority Rule:
-Snakes and ladders take precedence over surprise rolls.
-If a player moves via a snake or ladder and lands on a surprise tile afterward, the surprise effect occurs after the snake or ladder movement.
+- The primary logic lives in main.py, organised into reusable functions for clean structure and readability. Snakes and ladders take precedence over surprise rolls.
+- The primary logic lives in main.py, organised into reusable functions for clean structure and readability.
+- If a player moves via a snake or ladder and lands on a surprise tile afterward, the surprise effect occurs after the snake or ladder movement.
 
 Example Gameplay:
 
@@ -90,5 +104,4 @@ Player Blue has reached 100 and is the winner
 How to Run:
 Clone this repository, navigate into the folder, run the main script and follow the on-screen prompts to play manually or view the automatic game simulation.
 
-This project showcases a complete progression from basic Python programming to modular and functional design principles.
-It is a great way to learn loops, conditionals, lists, dictionaries, user input, and function-driven programming while creating a fun, interactive game.
+This project showcases a complete progression from basic Python programming to modular and functional design principles. It was a great way to learn loops, conditionals, lists, dictionaries, user input, and function-driven programming while creating a cmplex and interactive game.
